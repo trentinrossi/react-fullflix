@@ -1,0 +1,1 @@
+{"version":3,"file":"App.js","mappings":";;;;;;;AAAA;;;;;;;;AAEA,SAASA,GAAT,GAAe;EACb;AACD;;eAEcA","names":["App"],"sources":["../src/App.js"],"sourcesContent":["import Menu from \"./components/Menu\";\n\nfunction App() {\n  return ;\n}\n\nexport default App;\n"]}
