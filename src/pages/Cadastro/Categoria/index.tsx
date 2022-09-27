@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import PageTemplate from "../../../components/PageTemplate";
 import { Link } from "react-router-dom";
+import FormField from "../../../components/Form/Field";
+
+interface ICategoria {
+  nome: string;
+  descricao: string;
+  cor: string;
+}
 
 function CadastroCategoria() {
-  const initialValues = {
+  const initialValues: ICategoria = {
     nome: "",
     descricao: "",
     cor: "",
   };
 
-  const [categorias, setCategorias] = useState([]);
+  const [categorias, setCategorias] = useState<ICategoria[]>([]);
   const [values, setValues] = useState(initialValues);
 
   function setValue(key: any, value: any) {
@@ -22,7 +29,7 @@ function CadastroCategoria() {
 
   return (
     <PageTemplate>
-      <h1>Cadastro Categoria</h1>
+      <h1>Cadastro de Categorias</h1>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -30,38 +37,29 @@ function CadastroCategoria() {
           setValues(initialValues);
         }}
       >
-        <div>
-          <label id="name">Nome:</label>
-          <input
-            type="text"
-            name="nome"
-            id="nome"
-            value={values.nome}
-            onChange={handleChange}
-          ></input>
-        </div>
+        <FormField
+          type="text"
+          name="nome"
+          label="Nome:"
+          value={values.nome}
+          onChange={handleChange}
+        />
 
-        <div>
-          <label id="descricao">Descrição:</label>
-          <input
-            type="text"
-            name="descricao"
-            id="descricao"
-            value={values.descricao}
-            onChange={handleChange}
-          ></input>
-        </div>
+        <FormField
+          type="textarea"
+          name="descricao"
+          label="Descrição"
+          value={values.descricao}
+          onChange={handleChange}
+        />
 
-        <div>
-          <label id="cor">Cor:</label>
-          <input
-            type="color"
-            name="cor"
-            id="cor"
-            value={values.cor}
-            onChange={handleChange}
-          ></input>
-        </div>
+        <FormField
+          type="color"
+          name="cor"
+          label="Cor:"
+          value={values.cor}
+          onChange={handleChange}
+        />
 
         <button>Salvar</button>
       </form>
